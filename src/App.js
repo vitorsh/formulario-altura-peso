@@ -8,6 +8,7 @@ function App() {
 
   const calcularIMC = (e) => {
     e.preventDefault();
+
     const alt = parseFloat(altura);
     const ps = parseFloat(peso);
 
@@ -18,23 +19,13 @@ function App() {
 
     const imc = ps / (alt * alt);
     let classificacao = "";
-    let cor = "";
 
-    if (imc < 18.5) {
-      classificacao = "Abaixo do peso";
-      cor = "#3498db"; // azul
-    } else if (imc < 25) {
-      classificacao = "Peso normal";
-      cor = "#2ecc71"; // verde
-    } else if (imc < 30) {
-      classificacao = "Sobrepeso";
-      cor = "#f1c40f"; // amarelo
-    } else {
-      classificacao = "Obesidade";
-      cor = "#e74c3c"; // vermelho
-    }
+    if (imc < 18.5) classificacao = "Abaixo do peso";
+    else if (imc < 25) classificacao = "Peso normal";
+    else if (imc < 30) classificacao = "Sobrepeso";
+    else classificacao = "Obesidade";
 
-    setResultado({ imc: imc.toFixed(2), classificacao, cor });
+    setResultado({ imc: imc.toFixed(2), classificacao });
   };
 
   const limpar = () => {
@@ -68,9 +59,9 @@ function App() {
       </form>
 
       {resultado && (
-        <div className="resultado" style={{ backgroundColor: resultado.cor }}>
+        <div className="resultado">
           <p>IMC: {resultado.imc}</p>
-          <p>{resultado.classificacao}</p>
+          <p>Classificação: {resultado.classificacao}</p>
         </div>
       )}
     </div>

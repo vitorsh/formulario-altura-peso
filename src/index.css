@@ -55,5 +55,6 @@ button.limpar:hover {
   font-weight: bold;
   padding: 15px;
   border-radius: 8px;
+  background-color: #2ecc71;
   color: white;
 }
